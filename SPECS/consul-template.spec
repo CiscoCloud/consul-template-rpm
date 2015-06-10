@@ -1,5 +1,5 @@
 Name:           consul-template
-Version:        0.9.0
+Version:        0.10.0
 Release:        2%{?dist}
 Summary:        Generic template rendering and notifications with Consul
 
