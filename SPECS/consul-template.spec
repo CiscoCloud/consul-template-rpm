@@ -1,12 +1,12 @@
 Name:           consul-template
-Version:        0.10.0
-Release:        2%{?dist}
+Version:        0.11.1
+Release:        1%{?dist}
 Summary:        Generic template rendering and notifications with Consul
 
 Group:          System Environment/Daemons
 License:        MPLv2.0
 URL:            http://www.consul.io
-Source0:        https://github.com/hashicorp/%{name}/releases/download/v%{version}/%{name}_%{version}_linux_amd64.tar.gz
+Source0:	https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_amd64.zip
 Source1:        %{name}.service
 
 %if 0%{?fedora} >= 14 || 0%{?rhel} >= 7
@@ -19,7 +19,7 @@ Requires(pre): shadow-utils
 Generic template rendering and notifications with Consul
 
 %prep
-%setup -q -b 0 -n %{name}_%{version}_linux_amd64
+%setup -q -T -b 0 -c %{name}_%{version}_linux_amd64
 
 %install
 mkdir -p %{buildroot}/%{_bindir}
@@ -62,5 +62,11 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Wed Nov 18 2015 Dan Trainor <dan.trainor@gmail.com>
+- Bumped to version 0.11.1
+- Updated Source0 to vendor-provided mirror, not github
+- Cleaned up %setup to accomidate for new packaging from vendor
+
 * Thu Apr 2 2015 Chris <Chris.Aubuchon@gmail.com>
 * updated to 0.8.0
+
